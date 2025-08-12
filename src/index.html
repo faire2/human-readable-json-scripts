@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>JSON ⇄ Readable Script editor</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <h1>JSON ⇄ Readable Script editor</h1>
+      <p>Paste JSON on the left. The tool extracts the <code>script</code> string into the right pane for easy editing and visualisation. Edit &amp; sync back to JSON with one click.</p>
+    </header>
+
+    <section class="editor-grid">
+      <div class="pane">
+        <div class="pane-header">JSON editor</div>
+        <textarea id="jsonInput" class="mono" spellcheck="false" placeholder='Paste JSON here...'></textarea>
+        <div class="controls">
+          <button id="formatJsonBtn">Format JSON</button>
+          <button id="copyJsonBtn">Copy JSON</button>
+          <button id="loadBtn">Load →</button>
+        </div>
+      </div>
+
+      <div class="pane">
+        <div class="pane-header">Script (readable / editable)</div>
+        <textarea id="scriptArea" class="mono" spellcheck="false" placeholder='Script content will appear here...'></textarea>
+        <div class="controls">
+          <button id="applyBtn">← Apply edits to JSON</button>
+          <button id="copyScriptBtn">Copy Script</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="footer-note">
+      <small>Tip: If your JSON includes escaped newlines (\n) and quotes, the loader will unescape them so you can edit the template literally. Press "Apply edits" to write changes back into the JSON (it will escape again).</small>
+    </section>
+  </main>
+
+  <script type="module" src="app.ts"></script>
+</body>
+</html>

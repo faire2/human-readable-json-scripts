@@ -1,0 +1,24 @@
+{
+  "name": "human-readable-json-scripts",
+  "version": "1.0.0",
+  "description": "A web app for editing JSON scripts in a human-readable format",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && NODE_ENV=production vite build",
+    "preview": "vite preview",
+    "serve": "vite preview --port 3000"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "vite": "^5.0.0"
+  },
+  "keywords": [
+    "json",
+    "editor",
+    "typescript",
+    "web-app"
+  ],
+  "author": "Rostislav Janda",
+  "license": "MIT"
+}
