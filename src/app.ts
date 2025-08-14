@@ -106,8 +106,19 @@ function escapeNewlinesForJson(s: string): string {
   if (typeof s !== 'string') return s;
   // Normalize CRLF to LF first
   s = s.replace(/\r\n/g, '\n');
-  // Convert actual newlines into literal backslash+n sequences
-  return s.replace(/\n/g, '\\n');
+
+  // Only convert actual newlines to \n, but don't double-escape existing \n sequences
+  // First, temporarily replace existing \n sequences with a placeholder
+  const placeholder = '___EXISTING_NEWLINE_ESCAPE___';
+  s = s.replace(/\\n/g, placeholder);
+
+  // Convert actual newlines to \n
+  s = s.replace(/\n/g, '\\n');
+
+  // Restore the original \n sequences
+  s = s.replace(new RegExp(placeholder, 'g'), '\\n');
+
+  return s;
 }
 
 function loadJsonToPane() {
